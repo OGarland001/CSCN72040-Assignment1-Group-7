@@ -1,5 +1,6 @@
 package com.ctrlaltdefeatA01;
 import java.security.PublicKey;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.random.*;
 
@@ -63,7 +64,7 @@ class NearestNeighbor implements Classifer
 	public void train() {
 		//open the training file 
 		Input newFile;
-		newFile.setFilename("trainingData.txt");
+		newFile.setFileName("trainingData.txt");
 		//save the head of this list for later
 		headOfList = newFile.ReadData();
 	}
@@ -74,11 +75,11 @@ class NearestNeighbor implements Classifer
 	public void classifyFile(String filename) {
 		//read all the points in from a file
 		Input newFile;
-		newFile.setFilename(filename);
-		Node currentListNode = newFile.ReadData();
+		newFile.setFileName(filename);
+		LinkedList<Data> currentListNode = newFile.ReadData();
 		int tempStoreOrientation = 0;
 		Output saveFile;
-		saveFile.setFilename(filename);
+		saveFile.setFileName(filename);
 		//ensure to clear the file before writing to it
 		saveFile.ClearFile();
 		//loop through our list of data and save the points 
