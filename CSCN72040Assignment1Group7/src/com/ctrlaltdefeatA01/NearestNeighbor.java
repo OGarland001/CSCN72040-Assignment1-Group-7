@@ -1,17 +1,15 @@
 package com.ctrlaltdefeatA01;
-import java.security.PublicKey;
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.random.*;
 
 
 class NearestNeighbor implements Classifer
 {
-	private Node headOfList;
+	private LinkedList<Data> list;
 
 	//This is a AnotherClassifiers constructor
 	public NearestNeighbor() {
-		headOfList = null;
+		list = null;
 	} 
 		
 	//This is a classify method that will classify a phone orientation
@@ -22,12 +20,12 @@ class NearestNeighbor implements Classifer
 		double distance = 0.0;
 		
 		double shortestDistance = Double.MAX_VALUE;
-		Node currentNode = headOfList;
+		LinkedList<Data> currentNode = list;
 		
 		while(currentNode != null)
 		{
 			//find distance between data and current node
-			distance = findDistance(givenData, currentNode.point);
+			distance = givenData.findDistance(currentNode.pop());
 			
 			//check to see if the points are the same
 			if(shortestDistance == distance)
@@ -41,7 +39,7 @@ class NearestNeighbor implements Classifer
 				{
 					//Save the determined closet point 
 					shortestDistance = distance;
-					orientation = currentNode.point.getOrientation();
+					orientation = currentNode.pop().getOrientation();
 				}
 				//Otherwise we use the current point
 			}
@@ -49,12 +47,9 @@ class NearestNeighbor implements Classifer
 			else if(shortestDistance > distance)
 			{
 				shortestDistance = distance;
-				orientation = currentNode.point.getOrientation();
-				
+				orientation = currentNode.pop().getOrientation();
 			}
-		    currentNode = currentNode.nextNode();
 		}
-		
 		return orientation;
 	}
 
@@ -63,10 +58,10 @@ class NearestNeighbor implements Classifer
 	@Override
 	public void train() {
 		//open the training file 
-		Input newFile;
+		Input newFile = new Input();
 		newFile.setFileName("trainingData.txt");
 		//save the head of this list for later
-		headOfList = newFile.ReadData();
+		list = newFile.ReadData();
 	}
 
 	//This is a classify file method that will classify phone orientations in a given file	
@@ -74,11 +69,11 @@ class NearestNeighbor implements Classifer
 	@Override
 	public void classifyFile(String filename) {
 		//read all the points in from a file
-		Input newFile;
+		Input newFile = new Input();
 		newFile.setFileName(filename);
 		LinkedList<Data> currentListNode = newFile.ReadData();
 		int tempStoreOrientation = 0;
-		Output saveFile;
+		Output saveFile = new Output();
 		saveFile.setFileName(filename);
 		//ensure to clear the file before writing to it
 		saveFile.ClearFile();
@@ -86,11 +81,10 @@ class NearestNeighbor implements Classifer
 		while (currentListNode != null)
 		{
 			//classify the orientation
-			tempStoreOrientation = classify(currentListNode.point);
+			tempStoreOrientation = classify(currentListNode.element());
 			//save the orientation
-			currentListNode.point.setOrientation(tempStoreOrientation);
-			saveFile.WriteAllData(currentListNode.point);
-			currentListNode = currentListNode.nextNode;
+			currentListNode.element().setOrientation(tempStoreOrientation);
+			saveFile.WriteAllData(currentListNode.pop());
 		}
 	}
 }
