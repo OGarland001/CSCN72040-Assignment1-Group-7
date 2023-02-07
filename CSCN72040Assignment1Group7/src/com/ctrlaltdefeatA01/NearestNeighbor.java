@@ -6,21 +6,13 @@ import java.util.random.*;
 
 class NearestNeighbor implements Classifer
 {
-	
 	private Node headOfList;
-	
-	
 
 	//This is a AnotherClassifiers constructor
 	public NearestNeighbor() {
-		
-		
 		headOfList = null;
 	} 
-		// Print out what the constructor is doing
 		
-	
-	
 	//This is a classify method that will classify a phone orientation
 	//This is an overridden method that implements the NearestNeighbor version of classify
 	@Override
