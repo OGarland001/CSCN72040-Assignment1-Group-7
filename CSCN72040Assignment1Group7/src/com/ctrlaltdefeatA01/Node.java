@@ -10,7 +10,7 @@ public class Node extends Data {
 		//LinkedList<Node> list = new LinkedList<Node>();
 	}
 } 
-//TO BE CONTINUED********************
+//TO BE CONTINUED******************
 
 
 
