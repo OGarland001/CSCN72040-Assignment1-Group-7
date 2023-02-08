@@ -21,11 +21,12 @@ class NearestNeighbor implements Classifer
 		
 		double shortestDistance = Double.MAX_VALUE;
 		LinkedList<Data> currentNode = list;
-		
-		while(currentNode != null)
+		int i = 0;
+		while(currentNode.get(i) != currentNode.getLast() )
 		{
+			
 			//find distance between data and current node
-			distance = givenData.findDistance(currentNode.pop());
+			distance = givenData.findDistance(currentNode.get(i));
 			
 			//check to see if the points are the same
 			if(shortestDistance == distance)
@@ -39,7 +40,7 @@ class NearestNeighbor implements Classifer
 				{
 					//Save the determined closet point 
 					shortestDistance = distance;
-					orientation = currentNode.pop().getOrientation();
+					orientation = currentNode.get(i).getOrientation();
 				}
 				//Otherwise we use the current point
 			}
@@ -47,8 +48,10 @@ class NearestNeighbor implements Classifer
 			else if(shortestDistance > distance)
 			{
 				shortestDistance = distance;
-				orientation = currentNode.pop().getOrientation();
+				orientation = currentNode.get(i).getOrientation();
 			}
+			
+			i++;
 		}
 		return orientation;
 	}
@@ -62,6 +65,8 @@ class NearestNeighbor implements Classifer
 		newFile.setFileName("trainingData.txt");
 		//save the head of this list for later
 		list = newFile.ReadData();
+		
+		
 	}
 
 	//This is a classify file method that will classify phone orientations in a given file	

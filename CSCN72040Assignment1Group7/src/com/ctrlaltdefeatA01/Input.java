@@ -9,7 +9,7 @@ public class Input extends FileIO
 {
 	// This is the read data function that can read in sets of information from a text file
 	LinkedList<Data> ReadData() {
-		Data newData = new Data();
+		
 		String number;
 		LinkedList<Data> list = new LinkedList<Data>() ;
 		double newX, newY, newZ;
@@ -18,7 +18,9 @@ public class Input extends FileIO
 		{
 			File readableFile = new File(fileName);
 			Scanner fileInFileReader = new Scanner(readableFile);
+			int i = 0;
 			while (fileInFileReader.hasNextLine()) {
+				Data newData = new Data();
 				String line = fileInFileReader.nextLine();
 				line = line + ",";
 				String parts[] = line.split(",");
@@ -34,7 +36,8 @@ public class Input extends FileIO
 				newData.setY(newY);
 				newData.setZ(newZ);
 				newData.setOrientation(orientation);
-				list.add(newData);
+				list.add(i, newData);
+				i++;
 			}
 			fileInFileReader.close();
 
@@ -43,6 +46,8 @@ public class Input extends FileIO
 			System.out.println("Error opening:" + fileName);
 			e.printStackTrace();		
 		}
+		
+	
 		
 		return list;
 	}
