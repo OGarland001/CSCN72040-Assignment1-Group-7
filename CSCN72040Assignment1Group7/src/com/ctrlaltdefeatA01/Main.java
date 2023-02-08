@@ -5,38 +5,49 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        KNearestNeighbor newClassifierKNearestNeighbor = null;
-        newClassifierKNearestNeighbor.train();
-        NearestNeighbor newClassifierNearestNeighbor = null;
+        //KNearestNeighbor newClassifierKNearestNeighbor = null;
+        //newClassifierKNearestNeighbor.train();
+        NearestNeighbor newClassifierNearestNeighbor = new NearestNeighbor();
         newClassifierNearestNeighbor.train();
-        int x, y, z;
+        double x, y, z;
         System.out.println("Please manually enter the x y and z coordinates for a phone to find the orientation");
         try (Scanner userInput = new Scanner(System.in)) {
-            x = userInput.nextInt();
-            y = userInput.nextInt();
-            z = userInput.nextInt();
-            Scanner usersEntryData = userInput.collectData(); //function in input.java
+            x = userInput.nextDouble();
+            y = userInput.nextDouble();
+            z = userInput.nextDouble();
+            
+            
+            Data usersEntryData = new Data();
+            usersEntryData.setX(x);
+            usersEntryData.setY(y);
+            usersEntryData.setZ(z);
+            
+            System.out.println(x + "," + y + "," + z);
+           
+            
+            usersEntryData.setOrientation(newClassifierNearestNeighbor.classify(usersEntryData));
 
             System.out.println("The orientation of the phone based on the above inputs is:");
 
-            Output showAnswerOutput;
+            Output showAnswerOutput = new Output();
+           
 
             showAnswerOutput.printOrientation(usersEntryData);
 
             //Classify a single input using another classifier------------------------------------------
 
-            AnotherClassifer newClassifier2;
+            AnotherClassifer newClassifier2 = new AnotherClassifer();
             newClassifier2.train();
             newClassifier2.classify(usersEntryData);
             newClassifier2.classifyFile("unknownData.txt");
 
             //Classify a set of data in a text file to test nearest neighbor----------------------------
 
-            newClassifier1.classifyFile("testingData.txt");
+            newClassifierNearestNeighbor.classifyFile("testingData.txt");
 
             //Classify a set of data in a text file using nearest neighbor------------------------------
 
-            newClassifier1.classifyFile("unknownData.txt");
+            newClassifierNearestNeighbor.classifyFile("unknownData.txt");
         }
         catch (Exception e) {
             // TODO: handle exception
