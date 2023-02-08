@@ -50,12 +50,8 @@ public class Main {
             newClassifierNearestNeighbor.classifyFile("unknownData.txt");
         }
         catch (Exception e) {
-            // TODO: handle exception
             System.out.println("Error getting input");
             e.printStackTrace();
         }
-
-
     }
-
 }
