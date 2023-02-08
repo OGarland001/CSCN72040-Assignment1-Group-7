@@ -22,7 +22,7 @@ class NearestNeighbor implements Classifer
 		double shortestDistance = Double.MAX_VALUE;
 		LinkedList<Data> currentNode = list;
 		int i = 0;
-		while(currentNode.get(i) != currentNode.getLast() )
+		while(currentNode.get(i) != currentNode.getLast())
 		{
 			
 			//find distance between data and current node
@@ -65,8 +65,6 @@ class NearestNeighbor implements Classifer
 		newFile.setFileName("trainingData.txt");
 		//save the head of this list for later
 		list = newFile.ReadData();
-		
-		
 	}
 
 	//This is a classify file method that will classify phone orientations in a given file	
@@ -82,14 +80,16 @@ class NearestNeighbor implements Classifer
 		saveFile.setFileName(filename);
 		//ensure to clear the file before writing to it
 		saveFile.ClearFile();
+		int i = 0;
 		//loop through our list of data and save the points 
-		while (currentListNode != null)
+		while(currentListNode.get(i) != currentListNode.getLast())
 		{
 			//classify the orientation
-			tempStoreOrientation = classify(currentListNode.element());
+			tempStoreOrientation = classify(currentListNode.get(i));
 			//save the orientation
-			currentListNode.element().setOrientation(tempStoreOrientation);
-			saveFile.WriteAllData(currentListNode.pop());
+			currentListNode.get(i).setOrientation(tempStoreOrientation);
+			saveFile.WriteAllData(currentListNode.get(i));
+			i++;
 		}
 	}
 }

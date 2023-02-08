@@ -2,6 +2,7 @@ package com.ctrlaltdefeatA01;
 
 import java.io.FileNotFoundException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -16,10 +17,9 @@ public class Input extends FileIO
 		int orientation = 0;
 		try 
 		{
-			File readableFile = new File(fileName);
-			Scanner fileInFileReader = new Scanner(readableFile);
+			Scanner fileInFileReader = new Scanner(new FileInputStream(fileName));
 			int i = 0;
-			while (fileInFileReader.hasNextLine()) {
+			while (fileInFileReader.hasNextLine() == true) {
 				Data newData = new Data();
 				String line = fileInFileReader.nextLine();
 				line = line + ",";

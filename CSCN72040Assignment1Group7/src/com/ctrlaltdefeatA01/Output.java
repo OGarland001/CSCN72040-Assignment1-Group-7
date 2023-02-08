@@ -47,7 +47,7 @@ public class Output extends FileIO
 		try 
 		{
 			FileWriter fileOutFileWriter = new FileWriter(fileName, true);//use true to append to the file
-			fileOutFileWriter.write(givenData.getX() + "," + givenData.getY() + "," + givenData.getZ() + "," + givenData.getOrientation());
+			fileOutFileWriter.write(givenData.getX() + "," + givenData.getY() + "," + givenData.getZ() + "," + givenData.getOrientation() + "\n");
 			fileOutFileWriter.close();
 		} catch (IOException e) 
 		{
