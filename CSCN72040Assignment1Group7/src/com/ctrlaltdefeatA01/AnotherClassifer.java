@@ -14,7 +14,7 @@ class AnotherClassifer implements Classifer
 	@Override
 	public int classify(Data givenData) {
 		// Print out what the method is doing
-		System.out.println("AnotherClassifier constructor called");
+		System.out.println("AnotherClassifier classify called");
 		return 0;
 	}
 
@@ -23,7 +23,7 @@ class AnotherClassifer implements Classifer
 	@Override
 	public void train() {
 		// Print out what the method is doing
-		System.out.println("AnotherClassifier classify called");
+		System.out.println("AnotherClassifier train called");
 		
 	}
 
