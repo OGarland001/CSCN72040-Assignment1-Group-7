@@ -118,6 +118,7 @@ public class Input extends FileIO
 
 			} while (!validInput);
 		}
+		
 		return Data1;
 	}
 }
