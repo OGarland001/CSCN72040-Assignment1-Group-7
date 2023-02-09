@@ -22,9 +22,10 @@ class NearestNeighbor implements Classifer
 		double shortestDistance = Double.MAX_VALUE;
 		LinkedList<Data> currentNode = list;
 		int i = 0;
-		while(currentNode.get(i) != currentNode.getLast())
+		boolean canContinue = true;
+		boolean hasTripped = false;
+		do
 		{
-			
 			//find distance between data and current node
 			distance = givenData.findDistance(currentNode.get(i));
 			
@@ -52,7 +53,18 @@ class NearestNeighbor implements Classifer
 			}
 			
 			i++;
-		}
+			
+			//determine if we can continue looping
+			if(hasTripped == true)
+			{
+				canContinue = false;
+			}
+			else if(currentNode.get(i) == currentNode.getLast() && !hasTripped)
+			{
+				//Use the has tripped to loop 1 time past the loop condition
+				hasTripped = true;
+			}
+		}while(canContinue);
 		return orientation;
 	}
 
@@ -81,8 +93,10 @@ class NearestNeighbor implements Classifer
 		//ensure to clear the file before writing to it
 		saveFile.ClearFile();
 		int i = 0;
+		boolean canContinue = true;
+		boolean hasTripped = false;
 		//loop through our list of data and save the points 
-		while(currentListNode.get(i) != currentListNode.getLast())
+		do
 		{
 			//classify the orientation
 			tempStoreOrientation = classify(currentListNode.get(i));
@@ -90,6 +104,17 @@ class NearestNeighbor implements Classifer
 			currentListNode.get(i).setOrientation(tempStoreOrientation);
 			saveFile.WriteAllData(currentListNode.get(i));
 			i++;
-		}
+			
+			//determine if we can continue looping
+			if(hasTripped == true)
+			{
+				canContinue = false;
+			}
+			else if(currentListNode.get(i) == currentListNode.getLast() && !hasTripped)
+			{
+				//Use the has tripped to loop 1 time past the loop condition
+				hasTripped = true;
+			}
+		}while(canContinue);
 	}
 }

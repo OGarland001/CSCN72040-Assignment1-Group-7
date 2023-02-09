@@ -11,6 +11,4 @@ public class FileIO {
 	public void setFileName(String givenFileName) {
 		fileName = givenFileName;
 	}
-	
-	
 }

@@ -27,8 +27,14 @@ public class Input extends FileIO
 				newX = Double.parseDouble(parts[0]);
 				newY = Double.parseDouble(parts[1]);
 				newZ = Double.parseDouble(parts[2]);
-				number = "\0";
-				number = parts[3];
+				//sometimes we wont have an orientation (the third index)
+				try {
+					number = parts[3];//attempt to get orientation if not exception will be caught
+				} catch (Exception e) {
+					//there is not orientation
+					number = "\0";
+				}
+				//only convert string of index 3 if there is an orientation
 				if (number != "\0") {
 					orientation = Integer.parseInt(number);
 				}
@@ -46,9 +52,6 @@ public class Input extends FileIO
 			System.out.println("Error opening:" + fileName);
 			e.printStackTrace();		
 		}
-		
-	
-		
 		return list;
 	}
 
