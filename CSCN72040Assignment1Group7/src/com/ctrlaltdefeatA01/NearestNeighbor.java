@@ -2,7 +2,6 @@ package com.ctrlaltdefeatA01;
 import java.util.LinkedList;
 import java.util.Random;
 
-
 class NearestNeighbor implements Classifer
 {
 	private LinkedList<Data> list;

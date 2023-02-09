@@ -1,14 +1,7 @@
 package com.ctrlaltdefeatA01;
 
-
-
 public class Main {
     public static void main(String[] args) {
-
-        //KNearestNeighbor newClassifierKNearestNeighbor = null;
-        //newClassifierKNearestNeighbor.train();
-       
-    	//NearestNeighbor newClassifierNearestNeighbor = new NearestNeighbor();
     	
         KNearestNeighbor newClassifierKNearestNeighbor = new KNearestNeighbor();
         //newClassifierNearestNeighbor.train();
