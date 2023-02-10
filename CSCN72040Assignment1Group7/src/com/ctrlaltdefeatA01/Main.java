@@ -1,7 +1,14 @@
 package com.ctrlaltdefeatA01;
+import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
+
+        //KNearestNeighbor newClassifierKNearestNeighbor = null;
+        //newClassifierKNearestNeighbor.train();
+       
+    	//NearestNeighbor newClassifierNearestNeighbor = new NearestNeighbor();
     	
         KNearestNeighbor newClassifierKNearestNeighbor = new KNearestNeighbor();
         //newClassifierNearestNeighbor.train();
@@ -10,9 +17,9 @@ public class Main {
         System.out.println("KNearestNeighbor:");
         System.out.println("Please manually enter the x y and z coordinates for a phone to find the orientation");
        
-        
+       Scanner userInput = new Scanner(System.in);
        Input inputsInput = new Input();   
-       Data usersEntryData = inputsInput.collectData();    
+       Data usersEntryData = inputsInput.collectData(userInput);    
        usersEntryData.setOrientation(newClassifierKNearestNeighbor.classify(usersEntryData));
 
         System.out.println("The orientation of the phone based on the above inputs is:");
@@ -28,7 +35,8 @@ public class Main {
         System.out.println("NearestNeighbor:");
         System.out.println("Please manually enter the x y and z coordinates for a phone to find the orientation");
         Input NearestNeighborInput = new Input();   
-        Data NearestNeighnorusersEntryData = NearestNeighborInput.collectData();    
+        Data NearestNeighnorusersEntryData = NearestNeighborInput.collectData(userInput); 
+        userInput.close();
         NearestNeighnorusersEntryData.setOrientation(newClassifierNearestNeighbor.classify(NearestNeighnorusersEntryData));
 
         System.out.println("The orientation of the phone based on the above inputs is:");
@@ -54,7 +62,9 @@ public class Main {
         //Classify a set of data in a text file using nearest neighbor------------------------------
 
         newClassifierNearestNeighbor.classifyFile("unknownData.txt");
-    
-        
+
+
+
+
     }
 }
