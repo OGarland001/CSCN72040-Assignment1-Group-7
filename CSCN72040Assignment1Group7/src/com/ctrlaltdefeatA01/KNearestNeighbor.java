@@ -127,8 +127,10 @@ public class KNearestNeighbor implements Classifer{
 		//ensure to clear the file before writing to it
 		saveFile.ClearFile();
 		int i = 0;
+		boolean canContinue = true;
+		boolean hasTripped = false;
 		//loop through our list of data and save the points 
-		while(currentListNode.get(i) != currentListNode.getLast())
+		do
 		{
 			//classify the orientation
 			tempStoreOrientation = classify(currentListNode.get(i));
@@ -136,7 +138,17 @@ public class KNearestNeighbor implements Classifer{
 			currentListNode.get(i).setOrientation(tempStoreOrientation);
 			saveFile.WriteAllData(currentListNode.get(i));
 			i++;
-		}
+			//determine if we can continue looping
+			if(hasTripped == true)
+			{
+				canContinue = false;
+			}
+			else if(currentListNode.get(i) == currentListNode.getLast() && !hasTripped)
+			{
+				//Use the has tripped to loop 1 time past the loop condition
+				hasTripped = true;
+			}
+		}while(canContinue);
 		
 	}
 
@@ -144,10 +156,10 @@ public class KNearestNeighbor implements Classifer{
 	public void train() {
 		
 		//open the training file 
-				Input newFile = new Input();
-				newFile.setFileName("trainingData.txt");
-				//save the head of this list for later
-				list = newFile.ReadData();
+		Input newFile = new Input();
+		newFile.setFileName("trainingData.txt");
+		//save the head of this list for later
+		list = newFile.ReadData();
 		
 	}
 	

@@ -66,7 +66,7 @@ public class Main {
         newClassifierNearestNeighbor.classifyFile("unknownData.txt");
         
 
-
+        newClassifierKNearestNeighbor.classifyFile("KNNTestingData.txt");
 
 
     }
