@@ -123,7 +123,7 @@ public class KNearestNeighbor implements Classifer{
 		
 		Output saveFile = new Output();
 		
-		saveFile.setFileName(filenameString);
+		saveFile.setFileName("result.txt");
 		//ensure to clear the file before writing to it
 		saveFile.ClearFile();
 		int i = 0;
