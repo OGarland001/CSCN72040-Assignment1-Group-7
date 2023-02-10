@@ -3,6 +3,7 @@ package com.ctrlaltdefeatA01;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class KNearestNeighbor implements Classifer{
 	private LinkedList<Data> list;
@@ -36,7 +37,7 @@ public class KNearestNeighbor implements Classifer{
 		
 		  int n = list.size();  
 	        
-	        int k = 5;
+	        int k = 3;
 	        double temp = 0;
 	         for(int i=0; i < n; i++){  
 	                 for(int j=1; j < (n-i); j++){  
@@ -68,25 +69,25 @@ public class KNearestNeighbor implements Classifer{
 	    	
 	    	if(orientation == 1) {
 	    		fuCount++;
-	    		System.out.println("face up incremented");
+	    		
 	    	}else if(orientation == 2) {
 	    		fdCount++;
-	    		System.out.println("face down incremented");
+	 
 	    	}else if(orientation == 3) {
 	    		portCount++;
-	    		System.out.println("portrate face intrmented");
+	    		
 	    	}else if(orientation == 4) {
 	    		portSDCount++;
-	    		System.out.println("portrate side down intrmented");
+	    		
 	    	}else if(orientation == 5) {
 	    		landLeft++;
-	    		System.out.println("landscape left intrmented");
+	    		
 	    	}else if(orientation == 6) {
 	    		LandRight++;
-	    		System.out.println("landscape right face intrmented");
+	    		
 	    	}else {
 	    		no++;
-	    		System.out.println("Nothing");
+	    		
 	    	}
 			
 		}
@@ -103,10 +104,24 @@ public class KNearestNeighbor implements Classifer{
 	    	return 5;
 	    }else if(LandRight > fuCount && LandRight > fdCount && LandRight > portCount && LandRight > portSDCount && LandRight > landLeft && LandRight > no) {
 	    	return 6;
+	    
 	    }else if(no > fuCount && no > fdCount && no > portCount && no > portSDCount && no > landLeft &&  no > LandRight) {
 	    	return -1;
-	    }else return 0;
+	    
+	    }else 
+	    {
+	    	
+	    	//IF there is a tie.
+	    	Random rand = new Random();
+			int upperLimit = 6;
+			int randomNum = rand.nextInt(upperLimit);
+			
+			return randomNum;
+	    	
+	    }
 		
+	    
+	   
 	       
 }
 	         
