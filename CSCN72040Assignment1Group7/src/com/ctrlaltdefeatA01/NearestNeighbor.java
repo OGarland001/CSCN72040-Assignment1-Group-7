@@ -88,7 +88,7 @@ class NearestNeighbor implements Classifer
 		LinkedList<Data> currentListNode = newFile.ReadData();
 		int tempStoreOrientation = 0;
 		Output saveFile = new Output();
-		saveFile.setFileName(filename);
+		saveFile.setFileName("result.txt");
 		//ensure to clear the file before writing to it
 		saveFile.ClearFile();
 		int i = 0;
