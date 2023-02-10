@@ -41,15 +41,43 @@ public class Output extends FileIO
     
 	// This is the write all data function
 	// This function writes the X, Y, X and orientation to a file 
-	void WriteAllData(Data givenData)
+    void WriteAllData(Data givenData)
 	{
 		//write the points to the file with the determined orientation
 		try 
 		{
 			FileWriter fileOutFileWriter = new FileWriter(fileName, true);//use true to append to the file
-			fileOutFileWriter.write(givenData.getX() + "," + givenData.getY() + "," + givenData.getZ() + "," + givenData.getOrientation() + "\n");
+			int label = givenData.getOrientation();
+			String orientation;
+
+	    	switch (label)
+	    	{
+	    	case 1:
+	    		orientation = "Face Up";
+	    		break;
+	    	case 2:
+	    		orientation = "Face Down";
+	    		break;
+	    	case 3:
+	    		orientation = "Portrait";
+	    		break;
+	    	case 4:
+	    		orientation ="Portrait Side Down";
+	    		break;
+	    	case 5:
+	    		orientation ="Landscape left";
+	    		break;
+	    	case 6:
+	    		orientation ="Landscape Right";
+	    		break;
+	    	default:
+	    		orientation ="No orientation has been found";
+	    		break;
+	    	}
+			fileOutFileWriter.write(givenData.getX() + "," + givenData.getY() + "," + givenData.getZ() + "," + givenData.getOrientation() + orientation + "\n");
 			fileOutFileWriter.close();
-		} catch (IOException e) 
+		}
+		 catch (IOException e) 
 		{
 			System.out.println("Error opening:" + fileName);
 			e.printStackTrace();
