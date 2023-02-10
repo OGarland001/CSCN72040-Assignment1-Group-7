@@ -25,7 +25,9 @@ public class Main {
         System.out.println("The orientation of the phone based on the above inputs is:");
 
         Output showAnswerOutput = new Output();
-           
+        //Cleans the testing file and gets it ready for another output
+        showAnswerOutput.testingFileClean("testingData.txt");
+        showAnswerOutput.testingFileClean("unknownData.txt");
 
         showAnswerOutput.printOrientation(usersEntryData);
         
@@ -62,6 +64,7 @@ public class Main {
         //Classify a set of data in a text file using nearest neighbor------------------------------
 
         newClassifierNearestNeighbor.classifyFile("unknownData.txt");
+        
 
 
 
