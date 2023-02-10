@@ -16,8 +16,8 @@ public class Main {
     	System.out.println("-------------------------------------------------------------------------------");
 
     	System.out.println("\nPlease select from the following list of classifiers to use this time in the program:");
-    	System.out.println(" 1. NearestNeighbor");
-    	System.out.println(" 2. KNearestNeighbor");
+    	System.out.println(" 1. KNearestNeighbor");
+    	System.out.println(" 2. NearestNeighbor");
     	System.out.println(" 3. AnotherClassifier");
 
     	
@@ -171,7 +171,7 @@ public class Main {
           System.out.println("Invalid selection");
           break;
         }
-    	
+        System.out.println("DONE! Please re-run the program to try another classifier");
 	  	userInput.close();
     }
 }
