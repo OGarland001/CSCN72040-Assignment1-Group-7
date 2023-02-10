@@ -74,7 +74,7 @@ public class Output extends FileIO
 	    		orientation ="No orientation has been found";
 	    		break;
 	    	}
-			fileOutFileWriter.write(givenData.getX() + "," + givenData.getY() + "," + givenData.getZ() + "," + givenData.getOrientation() + orientation + "\n");
+			fileOutFileWriter.write(givenData.getX() + "," + givenData.getY() + "," + givenData.getZ() + "," + givenData.getOrientation() + "," + orientation + "\n");
 			fileOutFileWriter.close();
 		}
 		 catch (IOException e) 
